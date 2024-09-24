@@ -2,6 +2,7 @@
 let number1 = 0;
 let number2 = 0;
 let total = 0;
+let operator = "";
 
 // Add event listener to all digit buttons, to update the display
 const digitButtons = document.querySelectorAll(".digit-button");
@@ -11,7 +12,20 @@ digitButtons.forEach(function(e) {
         updateDisplay(e.innerHTML);
     })
 })
-    
+
+// Add button
+const addButton = document.querySelector("#add-button");
+addButton.addEventListener("click", function() { 
+    operator = "add";
+    number1 = captureNumberFromDisplay();
+})
+
+// = button (operate)
+const equalButton = document.querySelector("#equal-button");
+equalButton.addEventListener("click", function() {
+    operate(number1, number2);
+})
+
 
 // function to add
 function add(a, b) {
@@ -34,11 +48,16 @@ function divide(a, b) {
 }
 
 // function to handle operations, total and variables
-function operate(a, b, operation) {
+function operate(a, b) {
     let number1 = a;
     let number2 = b;
-    
-    let total = operation(number1, number2);
+    let total = 0;
+
+    if (operator == "add") {
+        total = add(number1, number2);
+    }
+    operator = "";
+    updateDisplay(total);
     return total;
 }
 
@@ -57,12 +76,15 @@ function updateDisplay(a) {
         // If current number is 0, we don't want to keep it
         if (displayString.innerHTML != "0") {    
         displayString.innerHTML = displayString.innerHTML + a;
-    } else {
+        } else {
         displayString.innerHTML = a;
+        }
     }
-    }
-    
-    
+}
+
+// Capture current number in the display, cast into a number and return
+function captureNumberFromDisplay() {
+    return Number(document.querySelector("#display-string").innerHTML);
 }
 
 // start state: display is 0 (number1 = 0). If 1 is pressed, number1 = 1, number keeps being defined until operator button is pressed
