@@ -13,10 +13,36 @@ digitButtons.forEach(function(e) {
     })
 })
 
+// Should be possible to merge add, subtract, multiply and divide into a single function
+
 // Add button
 const addButton = document.querySelector("#add-button");
 addButton.addEventListener("click", function() { 
     operator = "add";
+    number1 = Number(captureNumberFromDisplay());
+    resetDisplay();
+})
+
+// Subtract button
+const subtractButton = document.querySelector("#subtract-button");
+subtractButton.addEventListener("click", function() {
+    operator = "subtract";
+    number1 = Number(captureNumberFromDisplay());
+    resetDisplay();
+})
+
+// Multiply button
+const multiplyButton = document.querySelector("#multiply-button");
+multiplyButton.addEventListener("click", function() {
+    operator = "multiply";
+    number1 = Number(captureNumberFromDisplay());
+    resetDisplay();
+})
+
+// Divide button
+const divideButton = document.querySelector("#divide-button");
+divideButton.addEventListener("click", function() {
+    operator = "divide";
     number1 = Number(captureNumberFromDisplay());
     resetDisplay();
 })
@@ -58,6 +84,12 @@ function operate(a, b) {
 
     if (operator == "add") {
         total = add(Number(number1), Number(number2));
+    } else if (operator == "subtract") {
+        total = subtract(Number(number1), Number(number2));
+    } else if (operator == "multiply") {
+        total = multiply(Number(number1), Number(number2));
+    } else if (operator == "divide") {
+        total = divide(Number(number1), Number(number2));
     }
 
     // reset variables
