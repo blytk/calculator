@@ -17,12 +17,15 @@ digitButtons.forEach(function(e) {
 const addButton = document.querySelector("#add-button");
 addButton.addEventListener("click", function() { 
     operator = "add";
-    number1 = captureNumberFromDisplay();
+    number1 = Number(captureNumberFromDisplay());
+    resetDisplay();
 })
 
 // = button (operate)
 const equalButton = document.querySelector("#equal-button");
 equalButton.addEventListener("click", function() {
+    number2 = Number(captureNumberFromDisplay());
+    resetDisplay();
     operate(number1, number2);
 })
 
@@ -54,10 +57,14 @@ function operate(a, b) {
     let total = 0;
 
     if (operator == "add") {
-        total = add(number1, number2);
+        total = add(Number(number1), Number(number2));
     }
-    operator = "";
+
+    // reset variables
+    // operator = "";
+
     updateDisplay(total);
+    number1 = total;
     return total;
 }
 
@@ -80,6 +87,10 @@ function updateDisplay(a) {
         displayString.innerHTML = a;
         }
     }
+}
+
+function resetDisplay() {
+    document.querySelector("#display-string").innerHTML = "0";
 }
 
 // Capture current number in the display, cast into a number and return
