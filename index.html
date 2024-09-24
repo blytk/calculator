@@ -22,7 +22,7 @@
             <btn class="calculator-button digit-button">7</btn>
             <btn class="calculator-button digit-button">8</btn>
             <btn class="calculator-button digit-button">9</btn>
-            <btn class="calculator-button operator-button" id="subtract-button">-</btn>
+            <btn class="calculator-button operator-button" id="subtract-button" data-action="subtract">-</btn>
         </div>
 
         <!-- 4 to 6, + -->
@@ -30,7 +30,7 @@
             <btn class="calculator-button digit-button">4</btn>
             <btn class="calculator-button digit-button">5</btn>
             <btn class="calculator-button digit-button">6</btn>
-            <btn class="calculator-button operator-button" id="add-button">+</btn>
+            <btn class="calculator-button operator-button" id="add-button" data-action="add">+</btn>
          </div>
         
          <!-- 1 to 3, * -->
@@ -38,15 +38,15 @@
             <btn class="calculator-button digit-button">1</btn>
             <btn class="calculator-button digit-button">2</btn>
             <btn class="calculator-button digit-button">3</btn>
-            <btn class="calculator-button operator-button" id="multiply-button">x</btn>
+            <btn class="calculator-button operator-button" id="multiply-button" data-action="multiply">x</btn>
           </div>
 
         <!-- 0, . / -->
          <div class="calculator-row">
             <btn class="calculator-button digit-button">0</btn>
             <btn class="calculator-button digit-button" id="dot-button">.</btn>
-            <btn class="calculator-button operator-button" id ="divide-button">%</btn>
-            <btn class="calculator-button operator-button" id="equal-button">=</btn>
+            <btn class="calculator-button operator-button" id ="divide-button" data-action="divide">%</btn>
+            <btn class="calculator-button" id="equal-button">=</btn>
          </div>
 
     </div>

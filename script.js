@@ -7,45 +7,26 @@ let operator = "";
 // Add event listener to all digit buttons, to update the display
 const digitButtons = document.querySelectorAll(".digit-button");
 // Add function to update the display with the appropiate number
-digitButtons.forEach(function(e) {
-    e.addEventListener("click", function() {
-        updateDisplay(e.innerHTML);
+digitButtons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        updateDisplay(btn.innerHTML);
     })
 })
 
-// Should be possible to merge add, subtract, multiply and divide into a single function
-
-// Add button
-const addButton = document.querySelector("#add-button");
-addButton.addEventListener("click", function() { 
-    operator = "add";
-    number1 = Number(captureNumberFromDisplay());
-    resetDisplay();
+// Should be possible to merge add, subtract, multiply and divide into a single loop
+const basicOperationButtons = document.querySelectorAll(".operator-button");
+basicOperationButtons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        operator = btn.dataset.action;
+        number1 = Number(captureNumberFromDisplay());
+        resetDisplay();
+    })
 })
 
-// Subtract button
-const subtractButton = document.querySelector("#subtract-button");
-subtractButton.addEventListener("click", function() {
-    operator = "subtract";
-    number1 = Number(captureNumberFromDisplay());
-    resetDisplay();
-})
+// clear button
+const clearButton = document.querySelector("#clear-button");
+clearButton.addEventListener("click", resetDisplay);
 
-// Multiply button
-const multiplyButton = document.querySelector("#multiply-button");
-multiplyButton.addEventListener("click", function() {
-    operator = "multiply";
-    number1 = Number(captureNumberFromDisplay());
-    resetDisplay();
-})
-
-// Divide button
-const divideButton = document.querySelector("#divide-button");
-divideButton.addEventListener("click", function() {
-    operator = "divide";
-    number1 = Number(captureNumberFromDisplay());
-    resetDisplay();
-})
 
 // = button (operate)
 const equalButton = document.querySelector("#equal-button");
