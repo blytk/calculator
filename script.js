@@ -46,13 +46,22 @@ function updateDisplay(a) {
     // grab display html content
     // update html content to a
     let displayString = document.querySelector("#display-string");
-
-    // If current number is 0, we don't want to keep it
-    if (displayString.innerHTML != "0") {
+    // allow only for one "."
+    if (a == ".") {
+        if (displayString.innerHTML.includes(".")) {
+            return;
+        } else {
+            displayString.innerHTML = displayString.innerHTML + a;
+        }
+    } else {
+        // If current number is 0, we don't want to keep it
+        if (displayString.innerHTML != "0") {    
         displayString.innerHTML = displayString.innerHTML + a;
     } else {
         displayString.innerHTML = a;
     }
+    }
+    
     
 }
 
