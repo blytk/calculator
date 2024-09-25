@@ -70,7 +70,13 @@ function operate(a, b) {
     } else if (operator == "multiply") {
         total = multiply(Number(number1), Number(number2));
     } else if (operator == "divide") {
-        total = divide(Number(number1), Number(number2));
+        if (number2 == 0) {
+            document.querySelector("#display-string").innerHTML = "Error";
+            setTimeout(resetDisplay, 2000);
+            return;
+        } else {
+            total = divide(Number(number1), Number(number2));
+        }
     }
     total = Math.round(total * 100) / 100;
 
