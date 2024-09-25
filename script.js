@@ -11,9 +11,14 @@ digitButtons.forEach(function(btn) {
     btn.addEventListener("click", function() {
         updateDisplay(btn.innerHTML);
     })
+    btn.addEventListener("keydown", function(e) {
+        if (Number(e.key) >= 0 && Number(e.key) <= 9) {
+            updateDisplay(e.key);
+        }
+    })
 })
 
-// Should be possible to merge add, subtract, multiply and divide into a single loop
+// Add basic operation buttons functionality
 const basicOperationButtons = document.querySelectorAll(".operator-button");
 basicOperationButtons.forEach(function(btn) {
     btn.addEventListener("click", function() {
@@ -30,7 +35,12 @@ clearButton.addEventListener("click", resetDisplay);
 // delete button
 const deleteButton = document.querySelector("#delete-button");
 deleteButton.addEventListener("click", function() {
-    document.querySelector("#display-string").innerHTML = document.querySelector("#display-string").innerHTML.slice(0, -1);
+    let displayString = document.querySelector("#display-string");
+    if (displayString.innerHTML.length > 1) {
+        document.querySelector("#display-string").innerHTML = document.querySelector("#display-string").innerHTML.slice(0, -1);
+    } else if (displayString.innerHTML.length == 1) {
+        displayString.innerHTML = 0;
+    }
 })
 
 
@@ -123,7 +133,3 @@ function resetDisplay() {
 function captureNumberFromDisplay() {
     return Number(document.querySelector("#display-string").innerHTML);
 }
-
-// start state: display is 0 (number1 = 0). If 1 is pressed, number1 = 1, number keeps being defined until operator button is pressed
-
-// what if I create an object, num1, num2, result that keeps being reset?
