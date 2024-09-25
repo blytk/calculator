@@ -27,6 +27,12 @@ basicOperationButtons.forEach(function(btn) {
 const clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", resetDisplay);
 
+// delete button
+const deleteButton = document.querySelector("#delete-button");
+deleteButton.addEventListener("click", function() {
+    document.querySelector("#display-string").innerHTML = document.querySelector("#display-string").innerHTML.slice(0, -1);
+})
+
 
 // = button (operate)
 const equalButton = document.querySelector("#equal-button");
