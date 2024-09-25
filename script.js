@@ -4,17 +4,64 @@ let number2 = 0;
 let total = 0;
 let operator = "";
 
+// Add keyboard support for digits
+// Add keyboard support for operators (add, subtract, etc)
+/*
+switch (expression) {
+    case caseExpression1:
+      statements
+    case caseExpression2:
+      statements
+    // …
+    case caseExpressionN:
+      statements
+    default:
+      statements
+  }
+  */
+
+document.addEventListener("keydown", function(e) {
+    console.log(e.key);
+    if (Number(e.key) >= 0 && Number(e.key) <= 9) {
+        updateDisplay(e.key);
+    } else {
+        switch(e.key) {
+            case "+":
+                document.querySelector("#add-button").click();
+                break;
+            case "-":
+                document.querySelector("#subtract-button").click();
+                break;
+            case "*":
+                document.querySelector("#multiply-button").click();
+                break;
+            case "/":
+                document.querySelector("#divide-button").click();
+                break;
+            case ".":
+                document.querySelector("#dot-button").click();
+                break;
+            case "Enter":
+                document.querySelector("#equal-button").click();
+                break;
+            case "Backspace":
+                document.querySelector("#delete-button").click();
+                break;
+            case "Escape":
+                document.querySelector("#clear-button").click();
+                break;
+        }
+
+    }
+})
+
+
 // Add event listener to all digit buttons, to update the display
 const digitButtons = document.querySelectorAll(".digit-button");
 // Add function to update the display with the appropiate number
 digitButtons.forEach(function(btn) {
     btn.addEventListener("click", function() {
         updateDisplay(btn.innerHTML);
-    })
-    btn.addEventListener("keydown", function(e) {
-        if (Number(e.key) >= 0 && Number(e.key) <= 9) {
-            updateDisplay(e.key);
-        }
     })
 })
 
