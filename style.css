@@ -24,6 +24,14 @@ btn {
     min-width: 75px;
 }
 
+.operator-button, #equal-button, #dot-button {
+    background-color: rgb(22, 4, 4);
+}
+
+.digit-button {
+    background-color: rgb(28, 151, 207);
+}
+
 #calculator-outline {
     display: flex;
     flex-direction: column;
@@ -32,7 +40,7 @@ btn {
     align-items: center;
     gap: 16px;
     padding: 16px;
-    background-color: rgb(145, 175, 201);
+    background-color: rgba(100, 172, 235, 0.979);
 }
 
 #calculator-display {

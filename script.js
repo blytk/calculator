@@ -72,6 +72,7 @@ function operate(a, b) {
     } else if (operator == "divide") {
         total = divide(Number(number1), Number(number2));
     }
+    total = Math.round(total * 100) / 100;
 
     // reset variables
     // operator = "";
@@ -114,4 +115,3 @@ function captureNumberFromDisplay() {
 // start state: display is 0 (number1 = 0). If 1 is pressed, number1 = 1, number keeps being defined until operator button is pressed
 
 // what if I create an object, num1, num2, result that keeps being reset?
-
